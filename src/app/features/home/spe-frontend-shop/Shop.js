@@ -8,7 +8,12 @@ const HomeShopItem = ({ item, index, onQuantity }) => {
   // group: state
   const [fdQuantity, setFdQuantity] = useState(0)
 
-  // group: state
+  // group: action
+  const onQuantityChange = (value) => {
+    if (value <= item.product.stock) setFdQuantity(value)
+  }
+
+  // group: watch
   useEffect(() => {
     return () => {
       setFdQuantity(0)
@@ -40,7 +45,7 @@ const HomeShopItem = ({ item, index, onQuantity }) => {
             value={fdQuantity}
             type="number"
             className="h-[40px] w-[40px] border-2 border-gray-400 text-center"
-            onChange={(e) => setFdQuantity(e.currentTarget.value)}
+            onChange={(e) => onQuantityChange(e.currentTarget.value)}
           />
         </div>
       </td>

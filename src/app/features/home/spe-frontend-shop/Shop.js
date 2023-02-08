@@ -10,7 +10,7 @@ const HomeShopItem = ({ item, index, onQuantity }) => {
 
   // group: action
   const onQuantityChange = (value) => {
-    if (value <= item.product.stock) setFdQuantity(value)
+    if (value <= item.product.stock && value >= 0) setFdQuantity(value)
   }
 
   // group: watch
